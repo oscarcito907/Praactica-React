@@ -33,7 +33,6 @@ export const ProductsPage: React.FC = () => {
           <input type="text" value={searchName} onChange={e => setSearchName(e.target.value)} />
         </label>
 
-        {/* AQUÍ VA EL BLOQUE QUE ME HAS PASADO */}
         <label>
           Tipo de oferta:
           <select value={saleFilter} onChange={e => setSaleFilter(e.target.value)}>

@@ -9,6 +9,8 @@ export const NewProductPage: React.FC = () => {
   const [description, setDescription] = useState('');
   const [isOnSale, setIsOnSale] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
+  
+  const [image, setImage] = useState('');
 
   const availableTags = ["motor", "work", "lifestyle", "mobile", "motorcycle"];
 
@@ -30,8 +32,10 @@ export const NewProductPage: React.FC = () => {
         price: Number(price),
         description,
         isOnSale,
-        tags
+        tags,
+        image: image.trim() !== '' ? image : undefined
       });
+      
       navigate(`/products/${newProd.id}`);
     } catch (err) {
       console.error(err);
@@ -59,7 +63,12 @@ export const NewProductPage: React.FC = () => {
 
         <label>
           <input type="checkbox" checked={isOnSale} onChange={e => setIsOnSale(e.target.checked)} />
-          Es una Oferta
+          Es una Oferta (Venta)
+        </label>
+
+        <label>
+          URL de la Imagen / Foto (Opcional):
+          <input type="text" value={image} onChange={e => setImage(e.target.value)} placeholder="http://ejemplo.com/foto.jpg" />
         </label>
 
         <div>
