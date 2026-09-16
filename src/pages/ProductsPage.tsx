@@ -7,14 +7,12 @@ export const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchName, setSearchName] = useState('');
   
-  // 1. Estado inicial del filtro con 'todos' como pide el PDF
   const [saleFilter, setSaleFilter] = useState('todos'); 
 
   useEffect(() => {
     api.getProducts().then(setProducts).catch(console.error);
   }, []);
 
-  // 2. Lógica de filtrado acumulativo adaptada a 'venta' y 'compra'
   const filteredProducts = products.filter(product => {
     const matchesName = product.name.toLowerCase().includes(searchName.toLowerCase());
     const matchesSale =
